@@ -1,4 +1,4 @@
-# spring-data-jpa
+# GenerationType.SEQUENCE
 ```$xslt
 Hibernate: drop table if exists author
 Hibernate: drop table if exists hibernate_sequence
