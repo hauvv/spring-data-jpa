@@ -1,4 +1,4 @@
-# spring-data-jpa
+# GenerationType.IDENTITY
 ```Hibernate: insert into author (age, genre, name, version) values (?, ?, ?, ?)
 Hibernate: insert into author (age, genre, name, version) values (?, ?, ?, ?)
 Hibernate: insert into author (age, genre, name, version) values (?, ?, ?, ?)
