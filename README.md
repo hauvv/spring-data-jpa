@@ -113,4 +113,17 @@ Hibernate: insert into author (age, genre, name, version, id) values (?, ?, ?, ?
     0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
 }
 Take: 5214 ms
+
+
+--> How to fix:
+@Id
+    @GeneratedValue(
+            strategy= GenerationType.AUTO,
+            generator="native"
+    )
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
+    private Long id;
 ```
