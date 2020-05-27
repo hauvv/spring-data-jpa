@@ -1,5 +1,11 @@
-# spring-data-jpa
+#  GenerationType.AUTO
 ```$xslt
+When you use the GenerationType.AUTO:
+In older versions, Hibernate selected the GenerationType.IDENTITY for MySQL databases. 
+That was a good choice. As explained earlier, it’s the most efficient approach available.
+But that changed in Hibernate 5. It now selects the GenerationType.TABLE which uses a database table to generate primary keys. 
+This approach requires a lot of database queries and pessimistic locks to generate unique values.
+
 Hibernate: drop table if exists author
 Hibernate: drop table if exists hibernate_sequence
 Hibernate: create table author (id bigint not null, age integer not null, genre varchar(255), name varchar(255), version smallint, primary key (id)) engine=InnoDB
