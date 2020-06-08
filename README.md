@@ -1,6 +1,6 @@
 # GenerationType in JPA
 ```$xslt
-This project demo how to use GenerationType in JPA to handle batch insert/update
+Project này demo việc sử dụng GenerationType
 Branch list:
   GenerationType.AUTO
   GenerationType.IDENTITY
@@ -102,6 +102,10 @@ b. Nếu hibernate.id.new_generator_mappings=false thì:
     quan tâm đến việc set giá trị của trường primary key nữa, mà việc này Database sẽ đảm nhiệm (bản chất DB khi đó sẽ tự động gen trường này khi insert vào table, mà app k cần gọi thêm câu lệnh nào)
     --> Recomend sử dụng cấu hình này với stack : MySql, Hibernate 5
  3. SEQUENCE
+    Cấu hình này cũng phụ thuộc vào tham số cấu hình hibernate.id.new_generator_mappings
+    a. Nếu hibernate.id.new_generator_mappings = false
+    MySql không hỗ trợ database sequence nên code sẽ lỗi
+    b. Nếu hibernate.id.new_generator_mappings = true
     Khi sử dụng cấu hình này, Hibernate sẽ sử dụng 1 bảng hibernate_sequence (lưu ý là k có 's' như cấu hình AUTO & TABLE), và bảng này sẽ có cấu trúc như sau:
     CREATE TABLE `hibernate_sequence` (
         `next_val` INT(19),
@@ -123,9 +127,9 @@ b. Nếu hibernate.id.new_generator_mappings=false thì:
     | Author        |        2 |
     +---------------+----------+
 
-Recommended to use: GenerationType.IDENTITY with MySql & hibernate 5 tech stack
+Để sử dụng insert batch thì chúng ta sử dụng : GenerationType.IDENTITY với MySql & hibernate 5 tech stack
 
-Link:
+Link tham khảo:
  - https://dzone.com/articles/50-best-performance-practices-for-hibernate-5-amp
  - https://vladmihalcea.com/why-should-not-use-the-auto-jpa-generationtype-with-mysql-and-hibernate/
  - https://vladmihalcea.com/why-you-should-never-use-the-table-identifier-generator-with-jpa-and-hibernate/
